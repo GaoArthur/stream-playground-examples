@@ -52,7 +52,7 @@ countries.stream().mapToInt(country->country.getName().length()).average();
 
 //13.Prints all distinct regions of the countries with null area.
 
-countries.stream().filter(country -> country.getArea() == null).distinct().map(Country::getRegion).forEach(System.out::println);
+countries.stream().filter(country -> country.getArea() == null).map(Country::getRegion).distinct().forEach(System.out::println);
 
 //+++14.Returns the largest country with non-null area.
 
