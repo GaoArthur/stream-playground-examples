@@ -35,7 +35,8 @@ countries.stream().sorted(Comparator.comparingLong(country -> country.getTimezon
 
 //+++9.Returns the number of countries with no Spanish country name translation (the Spanish language is identified by the language code es).
 
-countries.stream().filter(country -> country.getTranslations().containsKey("es")).map(Country::getName).forEach(System.out::println);
+long numOfNoneSpanishCountry = countries.stream().filter(country -> country.getTranslations().containsKey("es")).count();
+long numOfNoneSpanishCountry = countries.stream().filter(country -> country.getTranslations().containsKey("es")).count();
 
 //10.Prints the names of countries with null area.
 
@@ -47,8 +48,8 @@ countries.stream().filter(country -> country.getArea() == null).map(Country::get
 
 //+++12.Returns the average length of country names.
 
-countries.stream().mapToInt(country->country.getName().length()).sum()/(double)countries.stream().count()
-countries.stream().mapToInt(country->country.getName().length()).average();
+double avgOfCountryName = countries.stream().mapToInt(country->country.getName().length()).sum()/(double)countries.stream().count();
+double avgOfCountryName = countries.stream().mapToInt(country->country.getName().length()).average();
 
 //13.Prints all distinct regions of the countries with null area.
 
@@ -56,7 +57,7 @@ countries.stream().filter(country -> country.getArea() == null).map(Country::get
 
 //+++14.Returns the largest country with non-null area.
 
-countries.stream().filter(country -> country.getArea()!=null).max(Comparator.comparing(Country::getArea)).get().getName();
+countries.stream().filter(country -> country.getArea()!=null).max(Comparator.comparing(Country::getArea)).get();
 
 //+++15.Prints the names of countries with a non-null area below 10 (requires the use of BigDecimal.TEN).
 
