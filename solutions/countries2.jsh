@@ -31,12 +31,11 @@ countries.stream().sorted(Comparator.comparingLong(country -> country.getTimezon
 
 //+++8.Prints the number of timezones for each country in the form name:population, in the ascending order of the number of timezones.
 
-countries.stream().sorted(Comparator.comparingLong(country -> country.getTimezones().size())).forEach(country -> country.getName()+":"+country.getPopulation());
+countries.stream().sorted(Comparator.comparing(country -> country.getTimezones().size())).forEach(country -> System.out.println(country.getName() + ": " + country.getPopulation()));
 
 //+++9.Returns the number of countries with no Spanish country name translation (the Spanish language is identified by the language code es).
 
-long numOfNoneSpanishCountry = countries.stream().filter(country -> country.getTranslations().containsKey("es")).count();
-long numOfNoneSpanishCountry = countries.stream().filter(country -> country.getTranslations().containsKey("es")).count();
+long numOfNoneSpanishCountry = countries.stream().filter(country -> !country.getTranslations().containsKey("es")).count();
 
 //10.Prints the names of countries with null area.
 
